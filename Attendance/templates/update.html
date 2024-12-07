@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h3>Update Users</h3>
+<div class="update col-md-4" style="align-items: center; justify-content: center;">
+   <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form4.as_p }}
+    <button type="submit" class="btn btn-warning">UPDATE</button>
+    <a href="{% url 'about' %}" class="btn btn-secondary">Cancel</a>
+</form>
+wtw-gwit-yyw
+
+
+
+
+
+
+
+{% endblock %}

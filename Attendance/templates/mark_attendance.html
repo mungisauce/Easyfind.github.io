@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-4">About Us</h1>
+            <p class="lead">Our mission is to find and source the best talents from all over the world. We believe in the power of a global talent pool and aim to connect professionals with opportunities that match their skills and aspirations.</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-goumbik-590022.jpg' %}" alt="Our Mission">
+                <div class="card-body">
+                    <h5 class="card-title">Our Mission</h5>
+                    <p class="card-text">To empower organizations by connecting them with top talent from around the globe, ensuring the best match for their needs and fostering a dynamic and diverse workforce.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-divinetechygirl-1181352.jpg' %}" alt="Our Vision">
+                <div class="card-body">
+                    <h5 class="card-title">Our Vision</h5>
+                    <p class="card-text">To be the leading global platform for talent acquisition and management, recognized for innovation, reliability, and excellence in service.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-tima-miroshnichenko-5439447.jpg' %}" alt="Our Values">
+                <div class="card-body">
+                    <h5 class="card-title">Our Values</h5>
+                    <p class="card-text">Integrity, Diversity, Innovation, Excellence, and Collaboration are the core values that drive our approach and define our success.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <h2>Meet Our Team</h2>
+        </div>
+    </div>
+    <div class="row mt-3">
+        {% for member in team_members %}
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{{ member.photo.url }}" alt="Team member photo">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ member.name }}</h5>
+                    <p class="card-text">{{ member.position }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

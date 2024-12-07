@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-4">About Us</h1>
+            <p class="lead">Our mission is to find and source the best talents from all over the world. We believe in the power of a global talent pool and aim to connect professionals with opportunities that match their skills and aspirations.</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-goumbik-590022.jpg' %}" alt="Our Mission">
+                <div class="card-body">
+                    <h5 class="card-title">Our Mission</h5>
+                    <p class="card-text">To empower organizations by connecting them with top talent from around the globe, ensuring the best match for their needs and fostering a dynamic and diverse workforce.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-divinetechygirl-1181352.jpg' %}" alt="Our Vision">
+                <div class="card-body">
+                    <h5 class="card-title">Our Vision</h5>
+                    <p class="card-text">To be the leading global platform for talent acquisition and management, recognized for innovation, reliability, and excellence in service.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{% static 'images/pexels-tima-miroshnichenko-5439447.jpg' %}" alt="Our Values">
+                <div class="card-body">
+                    <h5 class="card-title">Our Values</h5>
+                    <p class="card-text">Integrity, Diversity, Innovation, Excellence, and Collaboration are the core values that drive our approach and define our success.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <h2>Meet Our Team</h2>
+        </div>
+    </div>
+    <div class="row mt-3">
+        {% for member in team_members %}
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{{ member.photo.url }}" alt="Team member photo">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ member.name }}</h5>
+                    <p class="card-text">{{ member.position }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<h3>attendances List</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>PHOTO</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>AGE</th>
+        <th>PHONE_NUMBER</th>
+        <th>POSITION</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for attendance in data %}
+        <tr>
+            <td>
+                {% if attendance.image %}
+                <img src="{{ attendance.image.url }}" alt="{{ attendance.name }}" style="width: 80px; height: 80px; object-fit: cover">
+                {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}" alt="No Image" style="width: 80px; height: 80px; object-fit: cover">
+                {% endif %}
+            </td>
+            <td>{{ attendance.image }}</td>
+            <td>{{ attendance.name }}</td>
+            <td>{{ attendance.email }}</td>
+            <td>{{ attendance.age }}</td>
+            <td>{{ attendance.phoneNumber }}</td>
+            <td>{{ attendance.position }}</td>
+            <td><a href="{% url 'update' attendance.id %}" class="btn btn-success" type="button">UPDATE</a></td>
+            <td><a href="{% url 'delete' attendance.id %}" class="btn btn-danger" type="button"
+                   onclick="return confirm('Are you sure you want to delete this attendance?')">DELETE</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+

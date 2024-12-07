@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'style/style.css' %}">
+<h5>This is my contact page.</h5>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h1>Attendance Form</h1>
+        {{ form.as_p }}
+        <div class="d-grid gap-2">
+  <button class="btn btn-primary" type="submit">SUBMIT</button>
+</div>
+    </form>
+</div>
+    <div class="col-md-3"></div>
+</div>
+<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+<p>You look good when you smile</p>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+
+<body>
+    <header >
+        <nav class="navbar" >
+            <div class="navbar-left">
+                <a href="{% url 'about' %}"><img src=" {% static 'images/calendar.png' %}" alt="" style="width: 40px; height: 40px"></a>
+                <a href="https://www.fiverr.com/" style="text-decoration: none"><h1 style="color: white">EasyFind</h1></a>
+                <div class="logo">
+
+
+                </div>
+                <input type="text" class="search-bar" placeholder="What do you want to learn?">
+            </div>
+            <div class="navbar-right">
+                <ul class="nav-links">
+                   <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+
+                </ul>
+                <a href="{% url 'contact' %}"><button class="btn free-lms bg-info">Contact</button></a>
+                <a href="{% url 'login_view' %}"><button class="btn log-in bg-info">Log In</button></a>
+                <a href="{% url 'signup' %}"><button class="btn sign-up bg-info">Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+{% block content %}
+
+{% endblock %}
+<footer>
+    <div class="footer-middle">
+            <ul class="social-icons">
+                <li style="color: white"><a href="mailto:billymungiria@gmail.com">contact me via email</a></li>
+                <li style="color: white"><a href="https://www.facebook.com"><img src="{% static 'images/facebook.png' %}" alt="">Facebook </a></li>
+                <li style="color: white"><a href="https://www.twitter.com"><img src="{% static 'images/twitter.png' %}" alt="" style="color: white">Twitter</a></li>
+                <li style="color: white"><a href="https://www.linkedin.com/jobs/"><img src="{% static 'images/linkedin.png' %}" alt="" style="color: white">LinkedIn</a></li>
+                <li style="color: white"><a href="https://www.instagram.com"><img src="{% static 'images/instagram.png' %}" alt="" style="color: white">Instagram</a></li>
+                <li style="color: white"><a href="https://www.tiktok.com"><img src="{% static 'images/tik-tok.png' %}" alt="" style="color: white">TikTok</a></li>
+                <li style="color: white"><a href="https://www.youtube.com"><img src="{% static 'images/youtube.png' %}" alt="" style="color: white">Youtube</a></li>
+                <!-- Add more icons as needed -->
+            </ul>
+        </div>
+
+</footer>
+<script src="{%  static 'js/main.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

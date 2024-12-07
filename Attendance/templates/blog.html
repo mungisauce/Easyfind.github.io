@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-4">Our Blog</h1>
+                 <img src="{% static 'images/handshake.jpg' %}" alt="" style="width: 100vh;height: 100vh">
+            {% for post in posts %}
+            <div class="card mb-4 shadow-sm">
+                <img src="{% static 'images/handshake.jpg' %}" alt="">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text">{{ post.summary }}</p>
+                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ post.created_at }} by {{ post.author }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4>About Us</h4>
+                </div>
+                <div class="card-body">
+                    <p>We are dedicated to finding and sourcing the best talents from all over the world. Our attendance app helps you manage and connect with top professionals in various fields.</p>
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4>Categories</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        {% for category in categories %}
+                        <li><a href="{% url 'category_posts' category.id %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
